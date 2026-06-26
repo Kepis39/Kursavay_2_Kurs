@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:LibraryApp.ViewModels"
+             x:Class="LibraryApp.Views.ReportsView"
+             x:DataType="vm:ReportsViewModel">
+  <Grid Margin="20" RowDefinitions="Auto,Auto,*,Auto">
+    <TextBlock Grid.Row="0" Text="📊 Reports" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,15"/>
+
+    <WrapPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
+      <Button Content="📖 Book Report" Command="{Binding ShowBookReportCommand}" Background="#007ACC" Foreground="White" Padding="12,8" CornerRadius="8" Margin="0,0,8,0"/>
+      <Button Content="👥 Reader Report" Command="{Binding ShowReaderReportCommand}" Background="#007ACC" Foreground="White" Padding="12,8" CornerRadius="8" Margin="0,0,8,0"/>
+      <Button Content="🏷️ Theme Report" Command="{Binding ShowThemeReportCommand}" Background="#007ACC" Foreground="White" Padding="12,8" CornerRadius="8" Margin="0,0,8,0"/>
+      <Button Content="📚 Unloaned Books" Command="{Binding ShowUnloanedCommand}" Background="#FF9800" Foreground="White" Padding="12,8" CornerRadius="8" Margin="0,0,8,0"/>
+      <Button Content="⚠️ Debtors" Command="{Binding ShowDebtorsCommand}" Background="#F44336" Foreground="White" Padding="12,8" CornerRadius="8" Margin="0,0,8,0"/>
+      <Button Content="📤 Export Excel" Command="{Binding ExportExcelCommand}" Background="#007ACC" Foreground="White" Padding="12,8" CornerRadius="8" Margin="0,0,8,0"/>
+        <Button Content="📤 Export PDF" Command="{Binding ExportPdfCommand}" Background="#007ACC" Foreground="White" Padding="12,8" CornerRadius="8" Margin="0,0,8,0"/>
+         
+    </WrapPanel>
+
+    <Border Grid.Row="2" Background="#252536" CornerRadius="12" Padding="10">
+      <Grid>
+        <!-- Book Report -->
+        <DataGrid IsVisible="{Binding IsBookReportVisible}"
+                  ItemsSource="{Binding BookReportItems}" 
+                  AutoGenerateColumns="False"
+                  GridLinesVisibility="Horizontal"
+                  Background="Transparent"
+                  Foreground="White">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="BookId" Binding="{Binding BookId}" Width="80"/>
+            <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+            <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="150"/>
+            <DataGridTextColumn Header="Publisher" Binding="{Binding Publisher}" Width="120"/>
+            <DataGridTextColumn Header="Year" Binding="{Binding Year}" Width="70"/>
+            <DataGridTextColumn Header="Total" Binding="{Binding TotalCopies}" Width="70"/>
+            <DataGridTextColumn Header="Loaned" Binding="{Binding LoanedCopies}" Width="70"/>
+            <DataGridTextColumn Header="Available" Binding="{Binding AvailableCopies}" Width="80"/>
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Reader Report -->
+        <DataGrid IsVisible="{Binding IsReaderReportVisible}"
+                  ItemsSource="{Binding ReaderReportItems}" 
+                  AutoGenerateColumns="False"
+                  GridLinesVisibility="Horizontal"
+                  Background="Transparent"
+                  Foreground="White">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="*"/>
+            <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate}" Width="120"/>
+            <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="150"/>
+            <DataGridTextColumn Header="Total" Binding="{Binding TotalBooks}" Width="70"/>
+            <DataGridTextColumn Header="Returned" Binding="{Binding ReturnedBooks}" Width="80"/>
+            <DataGridTextColumn Header="Debts" Binding="{Binding DebtCount}" Width="70"/>
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Theme Report -->
+        <DataGrid IsVisible="{Binding IsThemeReportVisible}"
+                  ItemsSource="{Binding ThemeReportItems}" 
+                  AutoGenerateColumns="False"
+                  GridLinesVisibility="Horizontal"
+                  Background="Transparent"
+                  Foreground="White">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Theme" Binding="{Binding ThemeName}" Width="*"/>
+            <DataGridTextColumn Header="Books" Binding="{Binding BookCount}" Width="80"/>
+            <DataGridTextColumn Header="Copies" Binding="{Binding CopyCount}" Width="80"/>
+            <DataGridTextColumn Header="Loans" Binding="{Binding LoanCount}" Width="80"/>
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Unloaned Books -->
+        <DataGrid IsVisible="{Binding IsUnloanedVisible}"
+                  ItemsSource="{Binding UnloanedBooks}" 
+                  AutoGenerateColumns="False"
+                  GridLinesVisibility="Horizontal"
+                  Background="Transparent"
+                  Foreground="White">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="BookId" Binding="{Binding BookId}" Width="80"/>
+            <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+            <DataGridTextColumn Header="Author" Binding="{Binding FirstAuthor}" Width="150"/>
+            <DataGridTextColumn Header="Year" Binding="{Binding YearOfPublication}" Width="80"/>
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Debtors -->
+        <DataGrid IsVisible="{Binding IsDebtorsVisible}"
+                  ItemsSource="{Binding Debtors}" 
+                  AutoGenerateColumns="False"
+                  GridLinesVisibility="Horizontal"
+                  Background="Transparent"
+                  Foreground="White">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Ticket #" Binding="{Binding TicketNumber}" Width="90"/>
+            <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="*"/>
+            <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat={}{0:yyyy-MM-dd}}" Width="120"/>
+            <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="150"/>
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+    </Border>
+
+    <TextBlock Grid.Row="3" Text="{Binding Status}" Foreground="#8888AA" Margin="0,10,0,0"/>
+  </Grid>
+</UserControl>

@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:LibraryApp.ViewModels"
+             x:Class="LibraryApp.Views.ReadersView"
+             x:DataType="vm:ReadersViewModel">
+  <Grid Margin="20" RowDefinitions="Auto,Auto,*,Auto">
+    <TextBlock Grid.Row="0" Text="👥 Readers" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,15"/>
+
+    <Border Grid.Row="1" Background="#252536" CornerRadius="12" Padding="15" Margin="0,0,0,15">
+      <Grid ColumnDefinitions="*,*,*,Auto" RowDefinitions="Auto,Auto">
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Full Name" Foreground="#8888AA" Margin="5,0"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Birth Date" Foreground="#8888AA" Margin="5,0"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Phone" Foreground="#8888AA" Margin="5,0"/>
+
+        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewFullName}" Watermark="Full Name" Margin="5" Background="#1E1E2E" Foreground="White" BorderBrush="#444466"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NewBirthDate}" Watermark="yyyy-MM-dd" Margin="5" Background="#1E1E2E" Foreground="White" BorderBrush="#444466"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding NewPhone}" Watermark="Phone" Margin="5" Background="#1E1E2E" Foreground="White" BorderBrush="#444466"/>
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" Margin="10,0,0,0">
+          <Button Content="➕ Add" Command="{Binding AddCommand}" Background="#007ACC" Foreground="White" Padding="12,6" CornerRadius="6" Margin="0,2"/>
+          <Button Content="💾 Update" Command="{Binding UpdateCommand}" Background="#4CAF50" Foreground="White" Padding="12,6" CornerRadius="6" Margin="0,2"/>
+          <Button Content="🗑️ Delete" Command="{Binding DeleteCommand}" Background="#F44336" Foreground="White" Padding="12,6" CornerRadius="6" Margin="0,2"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="2" Background="#252536" CornerRadius="12" Padding="10">
+      <DataGrid ItemsSource="{Binding Readers}" 
+                SelectedItem="{Binding SelectedReader}"
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                Background="Transparent"
+                Foreground="White">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Ticket #" Binding="{Binding TicketNumber}" Width="80"/>
+          <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="*"/>
+          <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat={}{0:yyyy-MM-dd}}" Width="120"/>
+          <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="150"/>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Border>
+
+    <Grid Grid.Row="3" Margin="0,10,0,0" ColumnDefinitions="*,Auto">
+      <TextBlock Grid.Column="0" Text="{Binding Status}" Foreground="#8888AA" VerticalAlignment="Center"/>
+      <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
+        <Button Content="📂 Import CSV" Command="{Binding ImportCsvCommand}" Background="#444466" Foreground="White" Padding="10,5" CornerRadius="6"/>
+        <Button Content="📊 Import Excel" Command="{Binding ImportExcelCommand}" Background="#444466" Foreground="White" Padding="10,5" CornerRadius="6"/>
+        <Button Content="📄 Import JSON" Command="{Binding ImportJsonCommand}" Background="#444466" Foreground="White" Padding="10,5" CornerRadius="6"/>
+      </StackPanel>
+    </Grid>
+  </Grid>
+</UserControl>

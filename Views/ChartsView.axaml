@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:LibraryApp.ViewModels"
+             xmlns:conv="clr-namespace:LibraryApp.Converters"
+             x:Class="LibraryApp.Views.ChartsView"
+             x:DataType="vm:ChartsViewModel"
+             Background="#0f172a"
+             >
+
+ <Grid RowDefinitions="Auto,Auto,*">
+    <TextBlock Grid.Row="0" Text="📈 Charts &amp; Analytics" FontSize="26" FontWeight="Bold" Foreground="White" Margin="0,0,0,16"/>
+
+    <WrapPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12">
+      <Button Content="📊 Bar: Copies by Book" Command="{Binding LoadCopiesByBookCommand}" 
+              Background="#0ea5e9" Foreground="White" Padding="12,8" Margin="0,0,8,8" CornerRadius="6"/>
+      <Button Content="🥧 Pie: Loans by Theme" Command="{Binding LoadLoansByThemeCommand}" 
+              Background="#0ea5e9" Foreground="White" Padding="12,8" Margin="0,0,8,8" CornerRadius="6"/>
+      <Button Content="📉 Line: Monthly Loans" Command="{Binding LoadMonthlyLoansCommand}"
+              Background="#0ea5e9" Foreground="White" Padding="12,8" Margin="0,0,8,8" CornerRadius="6"/>
+      <Button Content="📊 Hist: Books by Pages" Command="{Binding LoadBooksByYearCommand}" 
+              Background="#0ea5e9" Foreground="White" Padding="12,8" Margin="0,0,8,8" CornerRadius="6"/>
+      <Button Content="💾 Save PNG" Command="{Binding SaveChartCommand}" Background="#10b981" Foreground="White" Padding="12,8" Margin="0,0,8,8" CornerRadius="6"/>
+    </WrapPanel>
+
+    <Border Grid.Row="2" Background="#1e293b" CornerRadius="8" BorderBrush="#334155" BorderThickness="1" Padding="12">
+      <Image Source="{Binding ChartImage}" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Border>
+  </Grid>
+</UserControl>

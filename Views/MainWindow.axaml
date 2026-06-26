@@ -1,0 +1,134 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:LibraryApp.ViewModels"
+        xmlns:conv="clr-namespace:LibraryApp.Converters"
+        x:Class="LibraryApp.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="Library Management System" 
+        Width="1400" Height="900"
+        Background="#1E1E2E">
+
+  <Window.Resources>
+    <conv:BoolToNavBgConverter x:Key="BoolToNavBgConverter"/>
+  </Window.Resources>
+
+  <Design.DataContext>
+    <vm:MainViewModel/>
+  </Design.DataContext>
+
+  <Grid ColumnDefinitions="260,*">
+    <!-- Sidebar -->
+    <Border Grid.Column="0" Background="#252536" BorderBrush="#33334D" BorderThickness="0,0,1,0">
+      <Grid RowDefinitions="Auto,*">
+        <Border Grid.Row="0" Background="#007ACC" Height="60">
+          <TextBlock Text="📚 LibraryApp" FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="20,0"/>
+        </Border>
+
+        <StackPanel Grid.Row="1" Margin="10,20">
+          <Button Command="{Binding NavigateHomeCommand}"
+                  Background="{Binding IsHomeSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/home.png" Width="24" Height="24"/>
+              <TextBlock Text="Home" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateBooksCommand}"
+                  Background="{Binding IsBooksSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/books.png" Width="24" Height="24"/>
+              <TextBlock Text="Books" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateCopiesCommand}"
+                  Background="{Binding IsCopiesSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/copies.png" Width="24" Height="24"/>
+              <TextBlock Text="Copies" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateReadersCommand}"
+                  Background="{Binding IsReadersSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/readers.png" Width="24" Height="24"/>
+              <TextBlock Text="Readers" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateThemesCommand}"
+                  Background="{Binding IsThemesSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/themes.png" Width="24" Height="24"/>
+              <TextBlock Text="Themes" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateLoansCommand}"
+                  Background="{Binding IsLoansSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/loans.png" Width="24" Height="24"/>
+              <TextBlock Text="Loans" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateReportsCommand}"
+                  Background="{Binding IsReportsSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/reports.png" Width="24" Height="24"/>
+              <TextBlock Text="Reports" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateChartsCommand}"
+                  Background="{Binding IsChartsSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/charts.png" Width="24" Height="24"/>
+              <TextBlock Text="Charts" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+
+          <Button Command="{Binding NavigateImportExportCommand}"
+                  Background="{Binding IsImportExportSelected, Converter={StaticResource BoolToNavBgConverter}}"
+                  Foreground="White" FontSize="14"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                  Padding="12,10" Margin="0,3" CornerRadius="8" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="avares://LibraryApp/Assets/import_export.png" Width="24" Height="24"/>
+              <TextBlock Text="Import / Export" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Column="1" Background="#1E1E2E">
+      <ContentControl Content="{Binding CurrentViewModel}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </Border>
+  </Grid>
+</Window>

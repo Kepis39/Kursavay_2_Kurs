@@ -1,0 +1,40 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:LibraryApp.ViewModels"
+             xmlns:views="clr-namespace:LibraryApp.Views"
+             x:Class="LibraryApp.App"
+             RequestedThemeVariant="Dark">
+  <Application.DataTemplates>
+    <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+      <views:HomeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:BooksViewModel}">
+      <views:BooksView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:CopiesViewModel}">
+      <views:CopiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ReadersViewModel}">
+      <views:ReadersView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ThemesViewModel}">
+      <views:ThemesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:LoansViewModel}">
+      <views:LoansView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ReportsViewModel}">
+      <views:ReportsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ChartsViewModel}">
+      <views:ChartsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ImportExportViewModel}">
+      <views:ImportExportView/>
+    </DataTemplate>
+  </Application.DataTemplates>
+  <Application.Styles>
+    <FluentTheme />
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+  </Application.Styles>
+</Application>
