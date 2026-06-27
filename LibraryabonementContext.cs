@@ -31,7 +31,7 @@ public partial class LibraryabonementContext : DbContext
     public virtual DbSet<ThematicCatalog> ThematicCatalogs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=C:\\kURS\\libraryabonement.db");
+        => optionsBuilder.UseSqlite("Data Source=libraryabonement.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
