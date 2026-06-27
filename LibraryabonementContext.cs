@@ -9,11 +9,13 @@ public partial class LibraryabonementContext : DbContext
 {
     public LibraryabonementContext()
     {
+    Database.EnsureCreated();
     }
 
     public LibraryabonementContext(DbContextOptions<LibraryabonementContext> options)
         : base(options)
     {
+    Database.EnsureCreated();
     }
 
     public virtual DbSet<Book> Books { get; set; }
